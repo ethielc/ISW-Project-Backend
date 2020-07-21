@@ -46,7 +46,7 @@ public class CamaController {
 	@PutMapping("/{id_pabellon}/camas/{id_cama}")
 	public Optional<Object> updateCama(@PathVariable Long id_pabellon, @PathVariable Long id_cama, @RequestBody Cama camaRequest) {
 		return camaService.listOne(id_cama).map(cama -> {
-			cama.setOcupada(camaRequest.isOcupada());
+			cama.setOcupada(camaRequest.getOcupada());
 			cama.setPaciente(camaRequest.getPaciente());
 			cama.setPabellon(camaRequest.getPabellon());
 			return camaService.saveOrUpdateCama(cama);

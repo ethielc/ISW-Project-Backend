@@ -9,5 +9,5 @@ import com.zac.backend.model.Pabellon;
 
 @Repository("PabellonRepository")
 public interface PabellonRepository extends JpaRepository<Pabellon, Long>{
-	public List<Pabellon> findByDisponibilidad(Boolean disponibilidad);
+	public List<Pabellon> findByDisponibilidad(int disponibilidad);
 }

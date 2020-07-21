@@ -23,7 +23,7 @@ public class CamaService {
 	public Optional<Cama> listOne(Long id) {
         return camaRepository.findById(id);
     }
-	public List<Cama> listByDisponibilidad(Boolean disponibilidad) {
+	public List<Cama> listByDisponibilidad(int disponibilidad) {
         return camaRepository.findByOcupada(disponibilidad);
     }
 	public List<Cama> findByPabellonId(Long id_pabellon) {

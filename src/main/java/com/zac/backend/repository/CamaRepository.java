@@ -9,6 +9,6 @@ import com.zac.backend.model.Cama;
 
 @Repository("CamaRepository")
 public interface CamaRepository extends JpaRepository<Cama, Long>{
-	public List<Cama> findByOcupada(Boolean ocupada);
+	public List<Cama> findByOcupada(int ocupada);
 	public List<Cama> findByPabellon(Long id_pabellon);
 }

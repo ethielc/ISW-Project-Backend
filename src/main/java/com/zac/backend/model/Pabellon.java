@@ -21,7 +21,7 @@ public class Pabellon {
 	@Column(name = "cant_camas")
 	private int cant_camas;
 	@Column(name = "disponibilidad")
-	private boolean disponibilidad;
+	private int disponibilidad;
 	@OneToMany(mappedBy = "pabellon")
 	private Set<Cama> camas;
 	
@@ -29,7 +29,7 @@ public class Pabellon {
 		super();
 	}
 
-	public Pabellon(long id_pabellon, String sala, int cant_camas, boolean disponibilidad, Set<Cama> camas) {
+	public Pabellon(long id_pabellon, String sala, int cant_camas, int disponibilidad, Set<Cama> camas) {
 		super();
 		this.id_pabellon = id_pabellon;
 		this.sala = sala;
@@ -62,11 +62,11 @@ public class Pabellon {
 		this.cant_camas = cant_camas;
 	}
 
-	public boolean isDisponibilidad() {
+	public int getDisponibilidad() {
 		return disponibilidad;
 	}
 
-	public void setDisponibilidad(boolean disponibilidad) {
+	public void setDisponibilidad(int disponibilidad) {
 		this.disponibilidad = disponibilidad;
 	}
 

@@ -20,41 +20,41 @@ import org.springframework.web.bind.annotation.RestController;
 import com.zac.backend.model.Pabellon;
 import com.zac.backend.service.PabellonService;
 
-@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/pabellones")
+@CrossOrigin(origins = "*")
 public class PabellonController {
 	@Autowired
 	PabellonService pabellonService;
 	
 	//Get Request
-	@GetMapping("/todos")
+	@GetMapping("/pabellones")
 	public List<Pabellon> getPabellones() {
 		return pabellonService.listAll();
 	}
-	@GetMapping("/{id}")
+	@GetMapping("/pabellones/{id}")
 	public Optional<Pabellon> getMedicoById(@PathVariable("id_pabellon") Long id_pabellon) {
 		return pabellonService.listOne(id_pabellon);
 	}
-	@GetMapping("/filtro")
-	public List<Pabellon> getPabellonesByDisponibilidad(@RequestParam(value = "disponibilidad") Boolean disponibilidad) {
+	@GetMapping("/pabellones/filtroPabellones")
+	public List<Pabellon> getPabellonesByDisponibilidad(@RequestParam(value = "disponibilidad") int disponibilidad) {
 		return pabellonService.findByDisponibilidad(disponibilidad);
 	}
 	
 	//Post Request
-	@PostMapping("")
+	@PostMapping("/pabellones")
 	public ResponseEntity<Pabellon> addPabellon(@RequestBody Pabellon pabellon) {
 		Pabellon pabe = pabellonService.saveOrUpdatePabellon(pabellon);
 		return new ResponseEntity<Pabellon>(pabe, HttpStatus.CREATED);
 	}
 	
 	//Put Request
-	@PutMapping("/{id")
+	@PutMapping("/pabellones/{id}")
 	public Optional<Object> updatePabellon(@PathVariable Long id_pabellon, @RequestBody Pabellon pabellon) {
 		return pabellonService.listOne(id_pabellon).map(pabe -> {
 			pabe.setSala(pabellon.getSala());
 			pabe.setCant_camas(pabellon.getCant_camas());
-			pabe.setDisponibilidad(pabellon.isDisponibilidad());
+			pabe.setDisponibilidad(pabellon.getDisponibilidad());
 			pabe.setCamas(pabellon.getCamas());
 			return pabellonService.saveOrUpdatePabellon(pabe);
 		});

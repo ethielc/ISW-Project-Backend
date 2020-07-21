@@ -23,7 +23,7 @@ public class PabellonService {
 	public Optional<Pabellon> listOne(Long id) {
         return pabellonRepository.findById(id);
     }
-	public List<Pabellon> findByDisponibilidad(Boolean disponibilidad) {
+	public List<Pabellon> findByDisponibilidad(int disponibilidad) {
 		return pabellonRepository.findByDisponibilidad(disponibilidad);
 	}
 	

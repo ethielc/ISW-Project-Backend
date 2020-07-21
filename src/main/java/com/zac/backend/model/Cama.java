@@ -16,7 +16,7 @@ public class Cama {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id_cama;
 	@Column(name = "ocupada")
-	private boolean ocupada;
+	private int ocupada;
 	@Column(name = "paciente")
 	private String paciente;
 	@ManyToOne
@@ -27,7 +27,7 @@ public class Cama {
 		super();
 	}
 
-	public Cama(long id_cama, boolean ocupada, String paciente, Pabellon pabellon) {
+	public Cama(long id_cama, int ocupada, String paciente, Pabellon pabellon) {
 		super();
 		this.id_cama = id_cama;
 		this.ocupada = ocupada;
@@ -43,11 +43,11 @@ public class Cama {
 		this.id_cama = id_cama;
 	}
 
-	public boolean isOcupada() {
+	public int getOcupada() {
 		return ocupada;
 	}
 
-	public void setOcupada(boolean ocupada) {
+	public void setOcupada(int ocupada) {
 		this.ocupada = ocupada;
 	}
 
