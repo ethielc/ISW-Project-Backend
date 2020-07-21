@@ -5,17 +5,20 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "PABELLON")
 public class Pabellon {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id_pabellon;
+    @GenericGenerator(name="incrementpabellon", strategy="increment")
+    @GeneratedValue(generator="incrementpabellon")
+	@Column(name="id_pabellon")
+	private long id;
 	@Column(name = "sala")
 	private String sala;
 	@Column(name = "cant_camas")
@@ -31,7 +34,7 @@ public class Pabellon {
 
 	public Pabellon(long id_pabellon, String sala, int cant_camas, int disponibilidad, Set<Cama> camas) {
 		super();
-		this.id_pabellon = id_pabellon;
+		this.id = id_pabellon;
 		this.sala = sala;
 		this.cant_camas = cant_camas;
 		this.disponibilidad = disponibilidad;
@@ -39,11 +42,11 @@ public class Pabellon {
 	}
 
 	public long getId_pabellon() {
-		return id_pabellon;
+		return id;
 	}
 
 	public void setId_pabellon(long id_pabellon) {
-		this.id_pabellon = id_pabellon;
+		this.id = id_pabellon;
 	}
 
 	public String getSala() {
